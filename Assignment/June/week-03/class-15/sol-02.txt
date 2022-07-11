@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        int n=searchWord.length();
+        int fixed=3;
+        List<List<String>> result = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            result.add(new ArrayList<String>());
+        }
+        Arrays.sort(products);
+        for(String str:products){
+            for(int i=0;i<n;i++){
+                if(i<str.length() && str.charAt(i)==searchWord.charAt(i)){
+                    if(result.get(i).size()<fixed){
+                        result.get(i).add(str);
+                    }
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+}
